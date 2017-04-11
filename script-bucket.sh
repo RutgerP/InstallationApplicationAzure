@@ -18,5 +18,5 @@ sudo apt-get install gcsfuse -y
 sudo mkdir /var/InstallationApplication/bucket
 sudo chown $USER:$USER /var/InstallationApplication/bucket
 
-GOOGLE_APPLICATION_CREDENTIALS=/var/InstallationApplication/account.json gcsfuse test-stage-cvo /var/bucket
+GOOGLE_APPLICATION_CREDENTIALS=/var/InstallationApplication/account.json gcsfuse test-stage-cvo /var/InstallationApplication/bucket
 
