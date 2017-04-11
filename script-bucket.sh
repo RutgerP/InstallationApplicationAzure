@@ -16,7 +16,7 @@ sudo apt-get install gcsfuse -y
 
 #Maak locatie van bucket aan
 sudo mkdir /var/InstallationApplication/bucket
-sudo chown $USER:$USER /var/bucket
+sudo chown $USER:$USER /var/InstallationApplication/bucket
 
 GOOGLE_APPLICATION_CREDENTIALS=/var/InstallationApplication/account.json gcsfuse test-stage-cvo /var/bucket
 
