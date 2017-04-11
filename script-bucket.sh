@@ -10,15 +10,13 @@ export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
 echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-#Maak locatie van bucket aan
-sudo mkdir bucket
-#Install s3fs
+#Update the list of packages available and install gcsfuse.
 sudo apt-get update
-sudo apt-get install s3fs -y
+sudo apt-get install gcsfuse -y
 
-sudo chmod 600 pass.txt
+#Maak locatie van bucket aan
+sudo mkdir /var/bucket
+sudo chown $USER:$USER /var/bucket
 
-sudo "user-allow-other" >> /etc/fuse.conf
-
-sudo s3fs test-stage-cvo bucket/ -o allow_other -o passwd_file=pass.txt -o url=https://storage.googleapis.com
+GOOGLE_APPLICATION_CREDENTIALS=/var/account.json gcsfuse test-stage-cvo /var/bucket
 
