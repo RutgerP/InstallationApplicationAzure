@@ -23,7 +23,7 @@ clear
 #Laatste lijn van document verwijderen, meestal exit 0
 sudo chmod 777 /etc/rc.local
 sudo sed -i '$ d' /etc/rc.local
-sudo echo "/var/InstallationApplication/script-bucket.sh" >> /etc/rc.local
+sudo echo "/var/InstallationApplication/script-mount.sh" >> /etc/rc.local
 sudo echo "exit 0" >> /etc/rc.local
 
 
