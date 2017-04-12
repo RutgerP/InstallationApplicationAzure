@@ -24,4 +24,6 @@ sudo sed -i '$ d' /etc/rc.local
 sudo echo "/var/InstallationApplication/script-bucket.sh" >> /etc/rc.local
 sudo echo "exit 0" >> /etc/rc.local
 
+sudo google_metadata_script_runner --script-type startup
+
 echo "Done"
