@@ -9,4 +9,8 @@ general:
           
 test:
   override:
-    - echo "Test" 
+    - sudo apt-get install git
+    - cd /var
+    - git clone https://github.com/KoenHaemels/InstallationApplication.git
+    - cd InstallationApplication
+    - ./main.sh
