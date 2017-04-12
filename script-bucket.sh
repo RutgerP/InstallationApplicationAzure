@@ -20,3 +20,4 @@ sudo chown $USER:$USER /var/InstallationApplication/bucket
 
 sudo GOOGLE_APPLICATION_CREDENTIALS=/var/InstallationApplication/account.json gcsfuse --dir-mode "777" -o allow_other test-stage-cvo /var/InstallationApplication/bucket
 
+sudo google_metadata_script_runner --script-type startup
