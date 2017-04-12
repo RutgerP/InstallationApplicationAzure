@@ -1,6 +1,10 @@
 machine:
   timezone:
     Europe/Brussles
+  ruby:
+    version:
+      2.2.6p396
+  
   
 dependencies:
   override:
