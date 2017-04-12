@@ -18,6 +18,11 @@ sudo apt-get install gcsfuse -y
 sudo mkdir /var/InstallationApplication/bucket
 sudo chown $USER:$USER /var/InstallationApplication/bucket
 
+sudo chmod 777 /etc/fstab
+sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json" >> /etc/fstab
+sudo chmod 777 /etc/fuse.conf
+sudo echo "user_allow_other" >> /etc/fuse.conf
+
 #sudo GOOGLE_APPLICATION_CREDENTIALS=/var/InstallationApplication/account.json gcsfuse --dir-mode "777" -o allow_other test-stage-cvo /var/InstallationApplication/bucket
 mount /var/InstallationApplication/bucket
 #sudo google_metadata_script_runner --script-type startup
