@@ -21,6 +21,7 @@ clear
 
 #script-bucket in opstartfile plaatsen
 #Laatste lijn van document verwijderen, meestal exit 0
+sudo chmod +x /var/InstallationApplication/script-mount.sh
 sudo chmod 777 /etc/rc.local
 sudo sed -i '$ d' /etc/rc.local
 sudo echo "/var/InstallationApplication/script-mount.sh" >> /etc/rc.local
