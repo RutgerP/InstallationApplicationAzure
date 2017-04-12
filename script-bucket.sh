@@ -16,7 +16,8 @@ sudo apt-get install gcsfuse -y
 
 #Maak locatie van bucket aan
 sudo mkdir /var/InstallationApplication/bucket
-sudo chown $USER:$USER /var/InstallationApplication/bucket
+sudo chmod 757 /var/InstallationApplication/bucket
+#sudo chown $USER:$USER /var/InstallationApplication/bucket
 
 sudo chmod 777 /etc/fstab
 sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json" >> /etc/fstab
