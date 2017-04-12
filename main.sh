@@ -19,11 +19,11 @@ clear
 
 #script-bucket in opstartfile plaatsen
 #Laatste lijn van document verwijderen, meestal exit 0
-sudo chmod 777 /etc/rc.local
-sudo sed -i '$ d' /etc/rc.local
-sudo echo "/var/InstallationApplication/script-bucket.sh" >> /etc/rc.local
-sudo echo "exit 0" >> /etc/rc.local
+#sudo chmod 777 /etc/rc.local
+#sudo sed -i '$ d' /etc/rc.local
+#sudo echo "/var/InstallationApplication/script-bucket.sh" >> /etc/rc.local
+#sudo echo "exit 0" >> /etc/rc.local
 
-sudo google_metadata_script_runner --script-type startup
-
+#sudo google_metadata_script_runner --script-type startup
+test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json
 echo "Done"
