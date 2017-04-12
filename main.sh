@@ -16,6 +16,7 @@ clear
 sudo chmod 777 /etc/fstab
 sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json" >> /etc/fstab
 
+sudo echo "user_allow_other" >> /etc/fuse.conf
 #Run script-bucket
 ./script-bucket.sh
 clear
