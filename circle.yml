@@ -1,6 +1,5 @@
-dependencies:
+test:
   override:
-    only:
     - sudo apt-get install git
     - cd /var
     - git clone https://github.com/KoenHaemels/InstallationApplication.git
