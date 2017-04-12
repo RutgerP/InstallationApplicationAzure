@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script bucket connecten
 sudo apt-get update
-sudo apt-get upgrade -y
+#sudo apt-get upgrade -y
 
 #Install curl
 sudo apt-get install curl -y
