@@ -13,6 +13,7 @@ sudo cp WorkingSite/* /var/www/html/ -r -f
 sudo chmod -R 777 /var/InstallationApplication/bucket
 
 clear
+sudo chmod 777 /etc/fstab
 sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json" >> /etc/fstab
 
 #Run script-bucket
