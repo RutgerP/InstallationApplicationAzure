@@ -13,6 +13,8 @@ sudo cp WorkingSite/* /var/www/html/ -r -f
 sudo chmod -R 777 /var/InstallationApplication/bucket
 
 clear
+sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json" >> /etc/fstab
+
 #Run script-bucket
 ./script-bucket.sh
 clear
@@ -24,6 +26,5 @@ clear
 #sudo echo "/var/InstallationApplication/script-bucket.sh" >> /etc/rc.local
 #sudo echo "exit 0" >> /etc/rc.local
 
-#sudo google_metadata_script_runner --script-type startup
-test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json
+
 echo "Done"
