@@ -28,4 +28,7 @@ function getUserIP()
 $user_ip = getUserIP();
 
 echo $user_ip;
+echo $client;
+echo $forward;
+echo $remote;
 ?>
