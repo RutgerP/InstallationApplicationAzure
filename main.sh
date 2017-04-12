@@ -1,7 +1,8 @@
 #!/bin/bash
 #Main script
 #Source Github
-sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get update 
+#&& sudo apt-get upgrade -y
 
 #Installeer apache2
 sudo apt-get install apache2 -y
