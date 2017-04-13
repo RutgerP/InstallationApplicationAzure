@@ -25,6 +25,7 @@
   <h1>Demo Applicatie</h1>
   <p>Hostname: <?php echo gethostname(); ?></p>
   <p>IP-address: <?php require 'includes/getip.php'; ?></p>
+  <p> NIEUW </p>	
 </div>
 
 <div class="container">
