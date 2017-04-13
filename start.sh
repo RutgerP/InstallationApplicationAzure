@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script to start packer
 
-sudo cd /var
+cd /var
 sudo git clone https://github.com/KoenHaemels/InstallationApplication.git
-cd /InstallationApplication
+cd InstallationApplication/
 ./main.sh
