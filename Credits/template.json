@@ -15,7 +15,8 @@
       "source_image": "ubuntu-1604-xenial-v20170330",
       "zone": "europe-west1-b",
       "ssh_username": "ubuntu",
-      "ssh_password": "cvotest"
+      "ssh_password": "cvotest",
+      "ami_name": "Packer-Image-Stage"
     }
   ]
 }
