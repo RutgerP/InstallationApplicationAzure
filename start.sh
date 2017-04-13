@@ -3,4 +3,4 @@
 
 sudo cd /var
 sudo git clone https://github.com/KoenHaemels/InstallationApplication.git
-sudo ./main.sh
+./main.sh
