@@ -33,7 +33,7 @@ sudo chmod 757 /var/InstallationApplication/bucket
 #sudo chown $USER:$USER /var/InstallationApplication/bucket
 
 sudo chmod 777 /etc/fstab
-sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/account.json" >> /etc/fstab
+sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/Credits/account.json" >> /etc/fstab
 sudo chmod 777 /etc/fuse.conf
 sudo echo "user_allow_other" >> /etc/fuse.conf
 clear
@@ -46,5 +46,6 @@ sudo sed -i '$ d' /etc/rc.local
 sudo echo "mount /var/InstallationApplication/bucket" >> /etc/rc.local
 sudo echo "exit 0" >> /etc/rc.local
 
+mount /var/InstallationApplication/bucket
 
 echo "Done"
