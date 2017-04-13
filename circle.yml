@@ -1,4 +1,22 @@
+machine:  
+  timezone: Europe/Brussels
+  
+  environment:
+    PACKER_VERSION: 0.8.1
+    GCLOUD_PROJECT: "certain-nexus-345"
+    GOOGLE_APPLICATION_CREDENTIALS: "$HOME/Credits/account.json"
+
+dependencies:  
+  cache_directories:
+    - "~/bin"
+  pre:
+    - mkdir -p ~/packer
+    - wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
+    - unzip packer_0.12.0_linux_amd64.zip
+    - mv packer ~/bin/packer
+
 test:
   override:
+    - ~/bin/packer validate ./Credits/packer.json
     - ./main.sh
 
