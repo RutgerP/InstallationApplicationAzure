@@ -17,6 +17,11 @@ dependencies:
 
 test:
   override:
-    - ~/bin/packer validate ./Credits/packer.json
+    - ~/bin/packer validate Credits/template.json
     - ./main.sh
-
+    
+deployment:
+  packer:
+    branch: master 
+    commands:
+      - ~/bin/packer build Credits/template.json
