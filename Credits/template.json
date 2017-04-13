@@ -16,7 +16,7 @@
       "zone": "europe-west1-b",
       "ssh_username": "ubuntu",
       "ssh_password": "cvotest",
-      "image_name": "Packer-Image-Stage"
+      "image_name": "packer-image-stage"
     }
   ]
 }
