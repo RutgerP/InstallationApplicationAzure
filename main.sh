@@ -10,7 +10,7 @@ sudo apt-get install apache2 -y
 sudo apt-get install php libapache2-mod-php -y
 #Application
 sudo rm -f /var/www/html/* -r
-sudo cp ./InstallationApplication/WorkingSite/* /var/www/html/ -r -f
+sudo cp $HOME/InstallationApplication/WorkingSite/* /var/www/html/ -r -f
 #sudo chmod -R 777 /var/InstallationApplication/bucket
 
 clear
