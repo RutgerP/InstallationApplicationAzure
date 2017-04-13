@@ -1,0 +1,21 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "start.sh",
+      "pause_before": "10s"
+    }
+  ],
+
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "certain-nexus-865",
+      "account_file": "account.json",
+      "source_image": "ubuntu-1604-xenial-v20170330",
+      "zone": "europe-west1-b",
+      "ssh_username": "ubuntu",
+      "ssh_password": "cvotest"
+    }
+  ]
+}
