@@ -27,4 +27,5 @@ deployment:
   packer:
     branch: master 
     commands:
+      - cd /var/InstallationApplication
       - ~/bin/packer build Credits/template.json
