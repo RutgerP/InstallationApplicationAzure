@@ -16,7 +16,7 @@ dependencies:
     - mv packer ~/bin/packer
     - sudo apt-get install git -y
     - cd /var
-    - sudo git clone https://github.com/KoenHaemels/InstallationApplication.git
+    - git clone https://github.com/KoenHaemels/InstallationApplication.git
 
 test:
   override:
