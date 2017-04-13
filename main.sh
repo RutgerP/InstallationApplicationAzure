@@ -27,6 +27,7 @@ sudo apt-get update
 sudo apt-get install gcsfuse -y
 
 #Maak locatie van bucket aan
+sudo mkdir /var/InstallationApplication
 sudo mkdir /var/InstallationApplication/bucket
 sudo chmod 757 /var/InstallationApplication/bucket
 #sudo chown $USER:$USER /var/InstallationApplication/bucket
