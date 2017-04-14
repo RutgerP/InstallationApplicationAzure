@@ -3,7 +3,7 @@ machine:
   
   environment:
     PACKER_VERSION: 0.8.1
-    GCLOUD_PROJECT: "certain-nexus-345"
+    GCLOUD_PROJECT: "certain-nexus-865"
     GOOGLE_APPLICATION_CREDENTIALS: "$HOME/Credits/account.json"
 
 dependencies:  
