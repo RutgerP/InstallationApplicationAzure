@@ -17,6 +17,13 @@ dependencies:
     - sudo apt-get install git -y
     - cd /var
     - git clone https://github.com/KoenHaemels/InstallationApplication.git
+    - sudo apt-get install curl -y
+    - export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
+    - echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+    - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    - sudo apt-get update
+    - sudo apt-get install gcsfuse -y
+    - gcloud compute images delete packer-image-stage
 
 test:
   override:
@@ -28,4 +35,5 @@ deployment:
     branch: master 
     commands:
       - cd /var/InstallationApplication
+      - 
       - ~/bin/packer build Credits/template.json
