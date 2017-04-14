@@ -18,10 +18,10 @@ dependencies:
     - cd /var
     - git clone https://github.com/KoenHaemels/InstallationApplication.git
     - sudo apt-get install curl -y
-    - export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
-    - echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+    - export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+    - echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
     - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    - sudo apt-get install gcsfuse -y
+    - sudo apt-get update && sudo apt-get install google-cloud-sdk
     - gcloud compute images delete packer-image-stage
 
 test:
