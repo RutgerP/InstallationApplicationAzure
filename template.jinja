@@ -1,4 +1,4 @@
-{% set INSTANCE_TEMPLATE = env['name'] + env['CI_BUILD_ID'] %}
+{% set INSTANCE_TEMPLATE = env['name'] + '$NUMBER' %}
 
 resources:
 - name: {{ INSTANCE_TEMPLATE }}
