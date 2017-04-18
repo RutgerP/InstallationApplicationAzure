@@ -1,3 +1,5 @@
+{% set INSTANCE_TEMPLATE = env['name'] + '-instance-template' %}
+
 resources:
 - name: {{ INSTANCE_TEMPLATE }}
   type: compute.v1.instanceTemplate
