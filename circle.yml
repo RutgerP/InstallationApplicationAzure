@@ -44,6 +44,6 @@ deployment:
     commands:
       - cd /var/InstallationApplication
       - ~/bin/packer build Credits/template.json
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create $NUMBER --config template.yml
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create ${NUMBER} --config template.yml
       - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=test-instance-template-1 --min-ready 1m --max-unavailable 1 --zone europe-west1-b -q
 
