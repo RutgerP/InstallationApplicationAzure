@@ -1,4 +1,4 @@
-{% set INSTANCE_TEMPLATE = env['name'] + '-instance-template-1' %}
+{% set INSTANCE_TEMPLATE = env['name'] + '"${BUILD}"' %}
 
 resources:
 - name: {{ INSTANCE_TEMPLATE }}
