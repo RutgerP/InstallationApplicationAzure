@@ -17,7 +17,6 @@ dependencies:
     - sudo apt-get install git -y
     - cd /var
     - git clone https://github.com/KoenHaemels/InstallationApplication.git
-    - base64 Credits/account.json
     - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
@@ -26,6 +25,7 @@ dependencies:
     - sudo chmod 777 ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
+    - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=packer-image-stage --min-ready 1m --max-unavailable 1 --region europe-west1
 
 
 test:
