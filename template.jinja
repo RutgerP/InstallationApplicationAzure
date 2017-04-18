@@ -1,4 +1,4 @@
-{% set INSTANCE_TEMPLATE = properties['name'] %}
+{% set INSTANCE_TEMPLATE = resources['name'] %}
 
 resources:
 - name: {{ INSTANCE_TEMPLATE }}
@@ -24,4 +24,3 @@ resources:
       tags:
         items:
         - http-server
-
