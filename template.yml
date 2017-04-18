@@ -1,0 +1,9 @@
+imports:
+- path: template.jinja
+
+resources:
+  - name: test
+    type: template.jinja
+    properties:
+      image: https://www.googleapis.com/compute/v1/projects/certain-nexus-865/global/images/packer-image-stage
+      machineType: g1-small
