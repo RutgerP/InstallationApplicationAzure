@@ -6,6 +6,11 @@ machine:
     GCLOUD_PROJECT: "certain-nexus-865"
     GOOGLE_APPLICATION_CREDENTIALS: "$HOME/Credits/account.json"
     BUILD: ${CIRCLE_BUILD_NUM}
+    
+general:
+  branches:
+    only:
+     - master # list of branches to ignore
 
 dependencies:  
   cache_directories:
