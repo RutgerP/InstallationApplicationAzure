@@ -19,6 +19,9 @@
   <h1>Demo Applicatie</h1>
   <h3>Hostname: <?php echo gethostname(); ?></h3>
   <h4>IP-address: <?php echo $_SERVER['SERVER_ADDR']; ?></h4>
+	<div> 
+          <canvas width="150" height="150" data-jdenticon-hash="<?php echo hash('sha256', gethostname()); ?>"></canvas> 
+	    </div>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
     Select image to upload:
@@ -28,8 +31,5 @@
     <input type="submit" value="Upload Image" name="submit">
 </form>
 </div>
-	   <div> 
-          <canvas width="150" height="150" data-jdenticon-hash="<?php echo hash('sha256', gethostname()); ?>"></canvas> 
-	    </div>
     </body>
 </html>
