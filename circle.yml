@@ -35,7 +35,6 @@ dependencies:
 test:
   override:
     - ~/bin/packer validate Credits/template.json
-    - sed -i 'name: template-file/c\name: template-file-${BUILD}' ${HOME}/template.yml
     - ./main.sh
     
 deployment:
