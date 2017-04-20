@@ -10,28 +10,40 @@ machine:
 general:
   branches:
     only:
-     - master # list of branches to ignore
+     - master # List of branches to ignore
      
 dependencies:  
   cache_directories:
     - "~/bin"
   pre:
-    - mkdir -p ~/packer #Installation Packer
+    #=======================
+    #Installation Packer
+    #=======================
+    - mkdir -p ~/packer 
     - wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
     - unzip packer_0.12.0_linux_amd64.zip
     - mv packer ~/bin/packer
-    - sudo apt-get install git -y #Installation GIT
+    #=======================
+    #Installation GIT + clone repository
+    #=======================
+    - sudo apt-get install git -y 
     - cd /var
     - git clone https://github.com/KoenHaemels/InstallationApplication.git
-    - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml #Change name to new BUILD ID
-    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json #Installation / authentication GCLOUD
+    #=======================
+    #Installation / authentication GCLOUD
+    #=======================
+    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json 
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update alpha
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
     - sudo apt-get update
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    #=======================
+    #Delete previous packer image
+    #=======================
     #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
-    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q #Delete previous image
+    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q 
+    #=======================
 
 test:
   override:
@@ -46,9 +58,21 @@ deployment:
     branch: master 
     commands:
       - cd /var/InstallationApplication
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" Credits/template.json #Change name to new BUILD ID
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" template.yml #Change name to new BUILD ID
-      - ~/bin/packer build Credits/template.json #Build new image
+      #=======================
+      #Change name to new BUILD ID
+      #=======================
+      - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml 
+      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" Credits/template.json
+      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" template.yml
+      #=======================
+      #Build new image
+      #=======================
+      - ~/bin/packer build Credits/template.json 
+      #=======================
+      #Create new instance
+      #=======================
       - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml
+      #=======================
+      #Rolling update
+      #=======================
       - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b -q
-      - echo "ok"
