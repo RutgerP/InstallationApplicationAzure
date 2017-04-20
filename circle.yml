@@ -79,4 +79,4 @@ deployment:
       #=======================
       #Delete Previous instance
       #=======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}"
+      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}" -q
