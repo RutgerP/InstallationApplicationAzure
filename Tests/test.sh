@@ -2,11 +2,11 @@
 #Test script
 #Check yaml files
 #Installation yamllint
-sudo apt-get update
-sudo apt-get install yamllint -y
+#sudo apt-get update
+#sudo apt-get install yamllint -y
 clear
 
-yamllint -c /Tests/configyamllint.yml /var/InstallationApplication
+/usr/bin/yamllint -c /Tests/configyamllint.yml /var/InstallationApplication
 
 #Check if apache is installed
 service=apache2
