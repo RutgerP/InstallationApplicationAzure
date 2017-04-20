@@ -5,10 +5,11 @@
 
         <title>Demo Applicatie</title>
 
-        <!-- Our CSS stylesheet file -->
+        <!-- Use bootstrap & main.css -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/main.css" />
 
+	<!-- Use javascripts -->
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="//cdn.jsdelivr.net/jdenticon/1.3.2/jdenticon.min.js" async></script>
 
