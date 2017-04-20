@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get install yamllint -y
 clear
 
-yamllint -c /Tests/configyamllint.yml /var/InstallationApplication
+yamllint -c Tests/configyamllint.yml InstallationApplication/
 
 #Check if apache is installed
 service=apache2
