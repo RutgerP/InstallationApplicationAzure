@@ -44,11 +44,7 @@ dependencies:
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
-    # Yamlling
-    # =======================
-    #- sudo find / -name yamllint
-    #- sudo apt-get install yamllint -y
-    #- sudo find / -name yamllint
+
 test:
   override:
     # =======================
@@ -61,13 +57,6 @@ test:
     # Check JSON file
     # =======================
     - ~/bin/packer validate Credits/template.json
-    # =======================
-    # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
-    - ls
-    - sudo chmod +x Tests/test.sh
-    - sudo chmod 777 Tests/test.sh
-    - sudo chmod 777 Tests/configyamllint.yml
-    - Tests/test.sh
     # =======================
 deployment:
   production:
