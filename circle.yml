@@ -55,12 +55,15 @@ test:
     - ~/bin/packer validate Credits/template.json
     # =======================
     # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
-    - cd InstallationApplication/Tests
     - ls
-    - sudo chmod +x test.sh
-    - sudo chmod 777 test.sh
-    - sudo chmod 777 configyamllint.yml
-    - ./test.sh
+    - sudo chmod +x Tests/test.sh
+    - sudo chmod 777 Tests/test.sh
+    - sudo chmod 777 Tests/configyamllint.yml
+    - Tests/test.sh
+    - sudo chmod +x InstallationApplication/Tests/test.sh
+    - sudo chmod 777 InstallationApplication/Tests/test.sh
+    - sudo chmod 777 InstallationApplication/Tests/configyamllint.yml
+    - InstallationApplication/Tests/test.sh
     # =======================
 deployment:
   production:
