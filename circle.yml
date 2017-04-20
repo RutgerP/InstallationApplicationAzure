@@ -60,7 +60,7 @@ test:
     - sudo chmod 777 Tests/configyamlling.yml
     - ls
     - ls -l Tests
-    - sudo /Tests/test.sh
+    - /Tests/test.sh
     # =======================
 deployment:
   production:
