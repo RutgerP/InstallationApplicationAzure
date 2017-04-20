@@ -41,4 +41,8 @@ sudo echo "exit 0" >> /etc/rc.local
 
 mount /var/InstallationApplication/bucket
 
+sudo chmod +x /var/InstallationApplication/Tests/test.sh
+sudo chmod 777 /var/InstallationApplication/Tests/test.sh
+sudo chmod 777 /var/InstallationApplication/Tests/configyamllint.yml
+/var/InstallationApplication/Tests/test.sh
 echo "Done"
