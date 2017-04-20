@@ -60,10 +60,6 @@ test:
     - sudo chmod 777 Tests/test.sh
     - sudo chmod 777 Tests/configyamllint.yml
     - Tests/test.sh
-    - sudo chmod +x InstallationApplication/Tests/test.sh
-    - sudo chmod 777 InstallationApplication/Tests/test.sh
-    - sudo chmod 777 InstallationApplication/Tests/configyamllint.yml
-    - InstallationApplication/Tests/test.sh
     # =======================
 deployment:
   production:
