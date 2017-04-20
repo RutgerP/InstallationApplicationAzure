@@ -58,9 +58,8 @@ test:
     - sudo chmod 777 Tests/test.sh
     - sudo chmod +x Tests/test.sh
     - ls
-    - cd Tests
-    - ls -l
-    - ./test.sh
+    - ls -l Tests
+    - sudo /Tests/test.sh
     # =======================
 deployment:
   production:
