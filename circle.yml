@@ -4,8 +4,8 @@ machine:
   environment:
     PACKER_VERSION: 0.8.1
     GCLOUD_PROJECT: "certain-nexus-865"
-    GOOGLE_APPLICATION_CREDENTIALS: "$HOME/Credits/account.json"
     BUILD: ${CIRCLE_BUILD_NUM}
+    PREVIOUSBUILD: ${CIRCLE_PREVIOUS_BUILD_NUM}
     
 general:
   branches:
@@ -16,28 +16,26 @@ dependencies:
   cache_directories:
     - "~/bin"
   pre:
-    - which sed
-    - mkdir -p ~/packer
+    - mkdir -p ~/packer #Installation Packer
     - wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
     - unzip packer_0.12.0_linux_amd64.zip
     - mv packer ~/bin/packer
-    - sudo apt-get install git -y
+    - sudo apt-get install git -y #Installation GIT
     - cd /var
     - git clone https://github.com/KoenHaemels/InstallationApplication.git
-    - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
-    - cat template.yml
-    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+    - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml #Change name to new BUILD ID
+    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json #Installation / authentication GCLOUD
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update alpha
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
     - sudo apt-get update
-    - sudo chmod 777 ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
     - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
+    #- sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q #Delete previous image
 
 test:
   override:
-    - ~/bin/packer validate Credits/template.json
+    - ~/bin/packer validate Credits/template.json #Check JSON file
     - ./main.sh
     
 deployment:
@@ -48,7 +46,8 @@ deployment:
     branch: master 
     commands:
       - cd /var/InstallationApplication
-      - ~/bin/packer build Credits/template.json
+      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" Credits/template.json #Change name to new BUILD ID
+      - ~/bin/packer build Credits/template.json #Build new image
       - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml
       - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b -q
       - echo "ok"
