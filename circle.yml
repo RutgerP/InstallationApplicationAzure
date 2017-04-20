@@ -46,10 +46,17 @@ dependencies:
 test:
   override:
     # =======================
+    # Run installation of the application
+    # =======================
+    - ./main.sh
+    # =======================
     # Check JSON file
     # =======================
     - ~/bin/packer validate Credits/template.json
-    - ./main.sh
+    # =======================
+    # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
+    - Tests/test.sh
+    # =======================
 deployment:
   production:
     pre:
