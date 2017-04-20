@@ -55,50 +55,12 @@ test:
     - ~/bin/packer validate Credits/template.json
     # =======================
     # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
-
-#Test script
-#Check yaml files
-#Installation yamllint
-sudo apt-get install yamllint -y
-clear
-
-yamllint -c /Tests/configyamllint.yml /var/InstallationApplication
-
-#Check if apache is installed
-service=apache2
-
-if (( $(ps -ef | grep -v grep | grep $service | wc -l) > 0 ))
-then
-  echo "$service is running!"
-else
-  echo "$service is not running/installed!"
-  echo "Stop test"
-exit 1
-fi
-
-#Check if site is up
-STATUS=$(curl -s -o /dev/null -w '%{http_code}' localhost)
-
-if [ $STATUS -eq 200 ]; then
-  echo "200-code, Application is running"
-else
-  echo "Got $STATUS"
-  echo "Stop test"
-  exit 1
-fi
-
-#Check if bucket is mounted
-if grep -qs '/var/InstallationApplication/bucket' /proc/mounts; then
-  echo "Bucket is mounted."
-else
-  echo "Bucket is not mounted."
-  echo "Stop test"
-  exit 1
-fi
-
-echo "Tests done"
-exit 0
-
+    - cd /var/InstallationApplication/Tests
+    - ls
+    - sudo chmod +x test.sh
+    - sudo chmod 777 test.sh
+    - sudo chmod 777 configyamllint.yml
+    - ./test.sh
     # =======================
 deployment:
   production:
