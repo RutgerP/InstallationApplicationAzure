@@ -46,9 +46,9 @@ dependencies:
     # =======================
     # Yamlling
     # =======================
-    - sudo find / -name yamllint
-    - sudo apt-get install yamllint -y
-    - sudo find / -name yamllint
+    #- sudo find / -name yamllint
+    #- sudo apt-get install yamllint -y
+    #- sudo find / -name yamllint
 test:
   override:
     # =======================
