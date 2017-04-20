@@ -27,7 +27,8 @@ dependencies:
     # =======================
     - sudo apt-get install git -y
     - cd /var
-    - git clone https://github.com/KoenHaemels/InstallationApplication.git
+    - sudo git clone https://github.com/KoenHaemels/InstallationApplication.git
+    - cd /InstallationApplication
     # =======================
     # Installation / authentication GCLOUD
     # =======================
@@ -37,6 +38,7 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
     - sudo apt-get update
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    - ./main.sh
     # =======================
     # Delete previous packer image
     # =======================
@@ -48,7 +50,8 @@ test:
     # =======================
     # Run installation of the application
     # =======================
-    - ./main.sh
+    - ls InstallationApplication
+    - ls InstallationApplication/bucket
     # =======================
     # Check JSON file
     # =======================
