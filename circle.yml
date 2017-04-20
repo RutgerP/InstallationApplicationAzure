@@ -56,8 +56,10 @@ test:
     # =======================
     # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
     - sudo chmod 777 Tests/test.sh
+    - sudo chmod +x Tests/test.sh
     - ls
     - cd Tests
+    - ls -l
     - ./test.sh
     # =======================
 deployment:
