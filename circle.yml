@@ -38,18 +38,24 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
     - sudo apt-get update
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-    - ./main.sh
+
     # =======================
     # Delete previous packer image
     # =======================
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
+    # Yamlling
+    # =======================
+    - sudo apt-get install yamllint -y
+    - find / -name yamllint
+    
 test:
   override:
     # =======================
     # Run installation of the application
     # =======================
+    - ./main.sh
     - ls InstallationApplication
     - ls InstallationApplication/bucket
     # =======================
