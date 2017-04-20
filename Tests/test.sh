@@ -8,6 +8,7 @@ clear
 
 /usr/bin/yamllint -c /Tests/configyamllint.yml /var/InstallationApplication
 
+
 #Check if apache is installed
 service=apache2
 
