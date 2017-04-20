@@ -51,8 +51,6 @@ test:
     # Run installation of the application
     # =======================
     - ./main.sh
-    - ls InstallationApplication
-    - ls InstallationApplication/bucket
     # =======================
     # Check JSON file
     # =======================
