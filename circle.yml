@@ -41,7 +41,7 @@ dependencies:
     # Delete previous packer image
     # =======================
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
-    - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
+    # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
 test:
   override:
@@ -55,6 +55,7 @@ test:
     - ~/bin/packer validate Credits/template.json
     # =======================
     # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
+    - sudo chmod 777 /Tests/test.sh
     - Tests/test.sh
     # =======================
 deployment:
