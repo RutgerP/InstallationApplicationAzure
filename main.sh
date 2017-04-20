@@ -45,4 +45,5 @@ sudo chmod +x /var/InstallationApplication/Tests/test.sh
 sudo chmod 777 /var/InstallationApplication/Tests/test.sh
 sudo chmod 777 /var/InstallationApplication/Tests/configyamllint.yml
 /var/InstallationApplication/Tests/test.sh
+
 echo "Done"
