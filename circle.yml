@@ -3,7 +3,6 @@ machine:
   timezone: Europe/Brussels
   environment:
     PACKER_VERSION: 0.8.1
-    GCLOUD_PROJECT: "certain-nexus-865"
     BUILD: ${CIRCLE_BUILD_NUM}
     PREVIOUSBUILD: ${CIRCLE_PREVIOUS_BUILD_NUM}
 general:
@@ -27,16 +26,16 @@ dependencies:
     # =======================
     - sudo apt-get install git -y
     - cd /var
-    - git clone https://github.com/KoenHaemels/InstallationApplication.git
+    - git clone https://github.com/KoenHaemels/InstallationApplicationAzure.git
     # =======================
     # Installation / authentication GCLOUD
     # =======================
-    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
-    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update alpha
-    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-    - sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
-    - sudo apt-get update
-    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    #- echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+    #- sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update alpha
+    #- sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    #- sudo /opt/google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
+    #- sudo apt-get update
+    #- sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
 
     # =======================
     # Delete previous packer image
@@ -44,30 +43,17 @@ dependencies:
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage -q
     # - sudo /opt/google-cloud-sdk/bin/gcloud compute images delete packer-image-stage-"${PREVIOUSBUILD}" -q
     # =======================
-    # Yamlling
-    # =======================
-    #- sudo find / -name yamllint
-    #- sudo apt-get install yamllint -y
-    #- sudo find / -name yamllint
+
 test:
   override:
     # =======================
     # Run installation of the application
     # =======================
     - ./main.sh
-    - ls InstallationApplication
-    - ls InstallationApplication/bucket
     # =======================
     # Check JSON file
     # =======================
-    - ~/bin/packer validate Credits/template.json
-    # =======================
-    # Run test script (Check .yml files, check if application is on, check if apache2 is running, check if bucket is mounted)
-    - ls
-    - sudo chmod +x Tests/test.sh
-    - sudo chmod 777 Tests/test.sh
-    - sudo chmod 777 Tests/configyamllint.yml
-    - Tests/test.sh
+    #- ~/bin/packer validate Credits/template.json
     # =======================
 deployment:
   production:
@@ -80,22 +66,22 @@ deployment:
       # =======================
       # Change name to new BUILD ID
       # =======================
-      - /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" Credits/template.json
-      - /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" template.yml
+      #- /bin/sed -i "s/template-file/template-file-"${BUILD}"/g" template.yml
+      #- /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" Credits/template.json
+      #- /bin/sed -i "s/packer-image-stage/packer-image-stage-"${BUILD}"/g" template.yml
       # =======================
       # Build new image
       # =======================
-      - ~/bin/packer build Credits/template.json
+      #- ~/bin/packer build Credits/template.json
       # =======================
       # Create new instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments create instance-"${BUILD}" --config template.yml
       # =======================
       # Rolling update
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud alpha compute instance-groups managed rolling-action start-update test-instance-groupmanager --version template=template-file-"${BUILD}" --min-ready 1m --max-unavailable 1 --zone europe-west1-b -q
       # =======================
       # Delete Previous instance
       # =======================
-      - sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}" -q
+      #- sudo /opt/google-cloud-sdk/bin/gcloud deployment-manager deployments delete instance-"${PREVIOUSBUILD}" -q
