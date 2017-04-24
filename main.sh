@@ -18,9 +18,9 @@ export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
 echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-#Update the list of packages available and install gcsfuse.
+#Update the list of packages available and install cifs-utils.
 sudo apt-get update
-sudo apt-get install gcsfuse -y
+sudo apt-get install cifs-utils -y
 clear
 
 #Create location bucket +rights
@@ -28,9 +28,7 @@ sudo mkdir /var/InstallationApplication
 sudo mkdir /var/InstallationApplication/bucket
 sudo chmod 757 /var/InstallationApplication/bucket
 sudo chmod 777 /etc/fstab
-sudo echo "test-stage-cvo /var/InstallationApplication/bucket gcsfuse allow_other,rw,noauto,user,dir_mode=777,file_mode=777,key_file=/var/InstallationApplication/Credits/account.json" >> /etc/fstab
-sudo chmod 777 /etc/fuse.conf
-sudo echo "user_allow_other" >> /etc/fuse.conf
+sudo echo "//testcvostorage.file.core.windows.net/testcvoshare var/InstallationApplication/bucket -o vers=3.0,username=testcvostorage,password=c2q52SLd4BUqaOFGzeGAFWLHfp65RPMQ+MnnFX5Z9Yd0DWtT3du/0VYI8onj/ZIGPmkoGySMWn5Hbs2nSYt81A==,dir_mode=0777,file_mode=0777" >> /etc/fstab
 clear
 
 #Mount bucket at startup
