@@ -1,6 +1,6 @@
 #!/bin/bash
 #Main script
-sudo apt-get update 
+sudo apt-get update && sudo apt-get upgrade -y 
 
 #Installation apache2
 sudo apt-get install apache2 -y
