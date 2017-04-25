@@ -2,6 +2,6 @@
 #Script to start packer
 
 cd /var
-sudo git clone https://github.com/KoenHaemels/InstallationApplication.git
-cd InstallationApplication/
+sudo git clone https://github.com/KoenHaemels/InstallationApplicationAzure.git
+cd InstallationApplicationAzure/
 ./main.sh
