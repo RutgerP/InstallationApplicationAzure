@@ -21,7 +21,7 @@ sudo mkdir /var/InstallationApplicationAzure/bucket
 sudo chmod 757 /var/InstallationApplicationAzure/bucket
 sudo chmod 777 /etc/fstab
 sudo mount -t cifs //stagecvostorage.file.core.windows.net/stagecvofileshare var/InstallationApplicationAzure/bucket -o vers=3.0,username=stagecvostorage,password=+OXKp2KtfrrA8zMz03azjasOo1rHh2bZrA4+kyeL4q0LuVLiiPzE+xU7gSoAVyf6jX9vlq/zDATmy1VKWFVWAg==,dir_mode=0777,file_mode=0777
-sudo echo "//stagecvostorage.file.core.windows.net/stagecvofileshare var/InstallationApplicationAzure/bucket -o vers=3.0,username=stagecvostorage,password=+OXKp2KtfrrA8zMz03azjasOo1rHh2bZrA4+kyeL4q0LuVLiiPzE+xU7gSoAVyf6jX9vlq/zDATmy1VKWFVWAg==,dir_mode=0777,file_mode=0777" >> /etc/fstab
+#sudo echo "//stagecvostorage.file.core.windows.net/stagecvofileshare var/InstallationApplicationAzure/bucket -o vers=3.0,username=stagecvostorage,password=+OXKp2KtfrrA8zMz03azjasOo1rHh2bZrA4+kyeL4q0LuVLiiPzE+xU7gSoAVyf6jX9vlq/zDATmy1VKWFVWAg==,dir_mode=0777,file_mode=0777" >> /etc/fstab
 #clear
 
 #Mount bucket at startup
